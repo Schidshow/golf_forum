@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "726077896695",
+    "project_id": "project-golf-forum",
+    "storage_bucket": "project-golf-forum.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:726077896695:android:51e56050b13de551c520f2",
+        "android_client_info": {
+          "package_name": "com.studio33.golf_forum"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "726077896695-6vapiqh01nr4dgn502fkvl501f2r8vtd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDs-_QLrlJts-pX6bTNpieUHovlA6xrt0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "726077896695-6vapiqh01nr4dgn502fkvl501f2r8vtd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

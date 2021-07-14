@@ -29,6 +29,11 @@ class KakaoLoginModule {
 
       //todo [1] 먼저 해당 유저 가져오기
       //todo [2] 유저가 있으면 가져온거 그대로 사용! 없으면? 추가(add)
+
+      _firestore.collection('users').where("email", isEqualTo: _accountEmail).get().then((value) {
+
+      });
+
       _firestore.collection('users').add({
         'email': _accountEmail,
       });

@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:kakao_flutter_sdk/all.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class KakaoLoginModule {
   final bool isKakaoTalkInstalled;
@@ -9,8 +10,9 @@ class KakaoLoginModule {
 
   KakaoLoginModule({required this.isKakaoTalkInstalled});
 
-  Function loginWithWhat() {
-    return isKakaoTalkInstalled ? _loginWithTalk() : _loginWithKakao();
+   Future<bool> loginWithWhat() async{
+    isKakaoTalkInstalled ? await _loginWithTalk() : await _loginWithKakao();
+    return true;
   }
 
   _issueAccessToken(String authCode) async {
@@ -18,15 +20,24 @@ class KakaoLoginModule {
       var token = await AuthApi.instance.issueAccessToken(authCode);
       AccessTokenStore.instance.toStore(token);
       print('tokkkkkkkkkkkkken = $token');
-      Get.toNamed('/login_result');
+
 
       final User user = await UserApi.instance.me();
       String _accountEmail = user.kakaoAccount!.email!;
       print(user);
 
+
+      //todo [1] 먼저 해당 유저 가져오기
+      //todo [2] 유저가 있으면 가져온거 그대로 사용! 없으면? 추가(add)
       _firestore.collection('users').add({
         'email': _accountEmail,
       });
+
+
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('isLogin',true);
+      await prefs.setString('user_id',user.id.toString());
+
     } catch (e) {
       print(e.toString());
     }

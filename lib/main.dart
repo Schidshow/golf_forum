@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:golf_forum/screens/loginPage.dart';
 import 'package:golf_forum/screens/login_result.dart';
+
 import 'package:golf_forum/screens/select_first_spot.dart';
 import 'package:kakao_flutter_sdk/all.dart';
+
+import 'screens/main_page.dart';
 
 // void main() {
 //   KakaoContext.clientId = 'c6649e448160c3635ba45fcabff93abe';
@@ -29,6 +32,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       getPages: [
         GetPage(name: '/', page: () => LoginPage()),
+        GetPage(name: '/main', page: () => MainPage()),
         GetPage(name: '/login_result', page: () => LoginResult()),
         GetPage(name: '/selectFirstSpot', page: () => SelectFirstSpot()),
       ],
